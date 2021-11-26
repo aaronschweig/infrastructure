@@ -60,3 +60,5 @@ To enable a GitOps based workflow with easy deployments to the kubernetes cluste
 This enabled an easy deployment workflow, with fine-grained controls.
 
 To deploy ArgoCD we use their [helm chart](https://argoproj.github.io/argo-helm) with the overrides specified in the `argo/values.yaml` file. To expose and access ArgoCD an Ingress is also specified.
+
+For this instance the argocd-dex server is configured to work with Github-Authentication. Therefore the `dex.github.clientSecret` must be put into the `argocd-secret` Secret.

@@ -3,3 +3,19 @@ server:
     enabled: true
   extraArgs:
     - '--insecure'
+  config:
+    url: 'https://argocd.aaronschweig.dev'
+    dex.config: |
+      connectors:
+      - type: github
+        id: github
+        name: GitHub
+        config:
+          clientID: f41a4aa0aebc2f0ea394
+          clientSecret: $dex.github.clientSecret
+          orgs:
+          - name: ams-pro
+  rbacConfig:
+    policy.csv: |
+      g, ams-pro, role:admin
+    policy.default: role:readonly
