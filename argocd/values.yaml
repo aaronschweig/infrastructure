@@ -24,7 +24,7 @@ server:
             - ./ 
   rbacConfig:
     policy.csv: |
-      g, ams-pro, role:admin
+      g, ams-pro:devops, role:admin
     policy.default: role:readonly
 
 repoServer:
