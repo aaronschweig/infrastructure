@@ -1,6 +1,15 @@
+apiVersionOverrides:
+  ingress: networking.k8s.io/v1
+
 server:
   ingress:
     enabled: true
+    hosts:
+      - argocd.aaronschweig.dev
+    tls:
+      - hosts:
+        - argocd.aaronschweig.dev
+        secretName: argocd-aaronschweig-dev
   extraArgs:
     - '--insecure'
   config:
@@ -65,3 +74,6 @@ configs:
       url: https://github.com/ams-pro
       username: aaronschweig
       password: <PAT>
+  secret:
+    extra:
+      dex.github.clientSecret: <CLIENT_SECRET>
