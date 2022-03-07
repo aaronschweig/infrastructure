@@ -1,0 +1,4 @@
+resources:
+  - cluster-issuer.yaml
+  - api-key.yaml
+  - argocd.aaronschweig.dev.yaml

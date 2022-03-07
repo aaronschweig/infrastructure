@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-aaronschweig-dev
+  namespace: argocd
+spec:
+  secretName: argocd-aaronschweig-dev
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - argocd.aaronschweig.dev

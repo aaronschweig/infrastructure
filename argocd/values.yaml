@@ -41,7 +41,7 @@ repoServer:
         mv argocd-vault-plugin /custom-tools/
     env:
       - name: AVP_VERSION
-        value: 1.4.0
+        value: 1.9.0
     volumeMounts:
       - mountPath: /custom-tools
         name: custom-tools

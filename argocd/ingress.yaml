@@ -2,9 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-server
-  annotations:
-    ingress.kubernetes.io/ssl-redirect: "false" # only during local development
+  namespace: argocd
 spec:
+  tls:
+    - hosts:
+      - argocd.aaronschweig.dev
+      secretName: argocd-aaronschweig-dev
   rules:
   - host: argocd.aaronschweig.dev
     http:
