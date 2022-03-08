@@ -3,6 +3,8 @@ kind: Secret
 metadata:
   name: cloudflare-api-key
   namespace: cert-manager
+annotations:
+  avp.kubernetes.io/path: "secret/data/cloudflare"
 type: Opaque
 stringData:
-  api-key: <API_KEY>
+  api-key: <api-key>

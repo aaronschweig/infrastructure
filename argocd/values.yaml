@@ -15,6 +15,10 @@ server:
   config:
     admin.enabled: false
     url: 'https://argocd.aaronschweig.dev'
+    resource.customizations.health.networking.k8s.io_Ingress: |
+      hs = {}
+      hs.status = "Healthy"
+      return hs
     dex.config: |
       connectors:
       - type: github
