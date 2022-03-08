@@ -1,5 +1,6 @@
 resources:
   - cluster-issuer.yaml
-  - api-key.yaml
+  # - api-key.yaml
   - wildcard-cert.yaml
   - argocd-cert.yaml
+  # - auto-sdb-app.yaml

@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: vault
+  namespace: argocd
 spec:
   destination:
     namespace: default
@@ -10,7 +11,7 @@ spec:
   source:
     repoURL: 'https://helm.releases.hashicorp.com'
     chart: vault
-    targetRevision: 0.18.0
+    targetRevision: 0.19.0
     helm:
       releaseName: vault
       values: |
@@ -19,12 +20,22 @@ spec:
         server:
           dev:
             enabled: false 
+          ingress:
+            enabled: true
+            hosts:
+              - host: vault.aaronschweig.dev
+            tls:
+              - hosts:
+                - vault.aaronschweig.dev
+                secretName: wildcard-aaronschweig-dev
+          dataStorage:
+            size: 1Gi
           # postStart:
           #   - /bin/sh
           #   - -c
           #   - |
           #     sleep 10s &&\
-          #     printf 'path "secret/*"{\ncapabilities=["read"]\n}' | vault policy write demo-policy - &&\
+          #     printf 'path "secret/*"{\ncapabilities=["read"]\n}' | vault policy write argocd-policy - &&\
           #     vault auth enable kubernetes &&\
           #     vault write auth/kubernetes/config\
           #       kubernetes_host=https://kubernetes.default.svc:443 \
