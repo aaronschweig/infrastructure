@@ -13,7 +13,7 @@ server:
   extraArgs:
     - '--insecure'
   config:
-    admin.enabled: false
+    admin.enabled: "false"
     url: 'https://argocd.aaronschweig.dev'
     resource.customizations.health.networking.k8s.io_Ingress: |
       hs = {}
@@ -35,7 +35,11 @@ server:
           command: [argocd-vault-plugin]
           args: 
             - generate
-            - ./ 
+            - ./
+      - name: argocd-vault-plugin-kustomize
+        generate:
+          command: ["sh", "-c"]
+          args: ["kustomize build . > all.yaml && argocd-vault-plugin generate all.yaml"]
   rbacConfig:
     policy.csv: |
       g, ams-pro:devops, role:admin
