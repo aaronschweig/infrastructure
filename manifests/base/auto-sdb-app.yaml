@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/aaronschweig/auto-sdb'
-    path: "./kubernetes"
+    path: "kubernetes"
   syncPolicy:
     automated:
       prune: true

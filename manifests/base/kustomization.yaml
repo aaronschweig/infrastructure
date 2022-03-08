@@ -3,4 +3,4 @@ resources:
   - api-key.yaml
   - wildcard-cert.yaml
   - argocd-cert.yaml
-  # - auto-sdb-app.yaml
+  - auto-sdb-app.yaml
