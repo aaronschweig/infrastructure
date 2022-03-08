@@ -18,21 +18,21 @@ spec:
           enabled: false
         server:
           dev:
-            enabled: true # TODO: disable development mode
-          postStart:
-            - /bin/sh
-            - -c
-            - |
-              sleep 10s &&\
-              printf 'path "secret/*"{\ncapabilities=["read"]\n}' | vault policy write demo-policy - &&\
-              vault auth enable kubernetes &&\
-              vault write auth/kubernetes/config\
-                kubernetes_host=https://kubernetes.default.svc:443 \
-                disable_iss_validation=true &&\
-              vault write auth/kubernetes/role/argocd \
-                bound_service_account_names=default \
-                bound_service_account_namespaces=* \
-                policies="avp-read-policy"
+            enabled: false 
+          # postStart:
+          #   - /bin/sh
+          #   - -c
+          #   - |
+          #     sleep 10s &&\
+          #     printf 'path "secret/*"{\ncapabilities=["read"]\n}' | vault policy write demo-policy - &&\
+          #     vault auth enable kubernetes &&\
+          #     vault write auth/kubernetes/config\
+          #       kubernetes_host=https://kubernetes.default.svc:443 \
+          #       disable_iss_validation=true &&\
+          #     vault write auth/kubernetes/role/argocd \
+          #       bound_service_account_names=default \
+          #       bound_service_account_namespaces=* \
+          #       policies="avp-read-policy"
   syncPolicy:
     automated:
       prune: true

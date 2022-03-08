@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-aaronschweig-dev
+spec:
+  secretName: wildcard-aaronschweig-dev
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: '*.aaronschweig.dev'
+  dnsNames:
+    - aaronschweig.dev
+    - '*.aaronschweig.dev'

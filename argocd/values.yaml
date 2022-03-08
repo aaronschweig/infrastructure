@@ -13,6 +13,7 @@ server:
   extraArgs:
     - '--insecure'
   config:
+    admin.enabled: false
     url: 'https://argocd.aaronschweig.dev'
     dex.config: |
       connectors:

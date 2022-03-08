@@ -1,4 +1,5 @@
 resources:
   - cluster-issuer.yaml
   - api-key.yaml
-  - argocd.aaronschweig.dev.yaml
+  - wildcard-cert.yaml
+  - argocd-cert.yaml
