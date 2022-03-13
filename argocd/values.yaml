@@ -20,6 +20,14 @@ server:
       hs.status = "Healthy"
       return hs
     dex.config: |
+      staticClients:
+      - id: vault-oidc
+        secret: $dex.github.clientSecret
+        name: 'Vault OIDC'
+        redirectURIs:
+          - https://vault.aaronschweig.dev/ui/vault/auth/oidc/oidc/callback # login via UI
+          - http://localhost:8250/oidc/callback # login via cli
+          
       connectors:
       - type: github
         id: github
