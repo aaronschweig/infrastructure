@@ -32,3 +32,7 @@ spec:
                 secretName: wildcard-aaronschweig-dev
           dataStorage:
             size: 1Gi
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
