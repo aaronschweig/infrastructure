@@ -9,12 +9,11 @@ helm install argocd argoproj/argo-cd -n argocd --create-namespace -f argocd/valu
 ```bash
 helm install cert-manager jetstack/cert-manager -n cert-manager --create-namespace --set installCRDs=true
 ```
-4. Unseal vault and enable oidc login via https://learn.hashicorp.com/tutorials/vault/oidc-auth?in=vault/auth-methods
 
-5. Apply the root manifest to be synced by argo:
-    - Adds `ClusterIssuer` and cloudflare credentials
-    - app-of-apps for the applications to be deployed into the cluster
+4. Unseal vault and apply the `vault/post-start.sh` script
+5. Seed the vault with the required secret values
 
+5. Apply the root manifest for argocd to take over
 
 
 ### Notes
