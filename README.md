@@ -1,19 +1,24 @@
 # Setup
 
 1. Create the cluster
-2. Fill out the credentials in the value file and install the [argo helm chart](https://argoproj.github.io/argo-helm)
+1. Fill out the credentials in the value file
+    - Discord Webhook-URL (`YOUR_WEBHOOK_URL`)
+    - Personal Access Token (`PAT`)
+    - Github Client Secret (`CLIENT_SECRET`)
+
+1. install the [argo helm chart](https://argoproj.github.io/argo-helm)
 ```bash
 helm install argocd argoproj/argo-cd -n argocd --create-namespace -f argocd/values.yaml
 ```
-3. Install the [cert-manager helm chart](https://charts.jetstack.io)
+4. Install the [cert-manager helm chart](https://charts.jetstack.io)
 ```bash
 helm install cert-manager jetstack/cert-manager -n cert-manager --create-namespace --set installCRDs=true
 ```
 
-4. Unseal vault and apply the `vault/post-start.sh` script
-5. Seed the vault with the required secret values
+5. Unseal vault and apply the `vault/post-start.sh` script
+1. Seed the vault with the required secret values
 
-5. Apply the root manifest for argocd to take over
+1. Apply the root manifest for argocd to take over
 
 
 ### Notes

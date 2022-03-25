@@ -37,6 +37,8 @@ server:
           clientSecret: $dex.github.clientSecret
           orgs:
           - name: ams-pro
+            teams:
+            - devops
     configManagementPlugins: |
       - name: argocd-vault
         generate:
@@ -68,7 +70,7 @@ repoServer:
       mv argocd-vault-plugin /custom-tools/
     env:
       - name: AVP_VERSION
-        value: 1.9.0
+        value: 1.10.0
     volumeMounts:
       - mountPath: /custom-tools
         name: custom-tools
@@ -95,3 +97,65 @@ configs:
   secret:
     extra:
       dex.github.clientSecret: <CLIENT_SECRET>
+
+applicationSet:
+  enabled: false
+
+notifications:
+  argocdUrl: 'https://argocd.aaronschweig.dev'
+  secret:
+    items:
+      discord-url: <YOUR_WEBHOOK_URL>
+  notifiers:
+    service.webhook.discord: |
+      url: $discord-url
+      headers:
+      - name: 'Content-Type'
+        value: 'application/json'
+  templates:
+    template.app-deployed: |
+      webhook:
+        discord:
+          method: POST
+          body: |
+            {
+              "embeds": [
+                {
+                  "title": ":white_check_mark: Application {{.app.metadata.name}} is now running the new version of deployments manifests.",
+                  "color": 1621586,
+                  "fields": [
+                    {
+                      "name": "Sync Status",
+                      "value": "{{.app.status.sync.status}}",
+                      "inline": true
+                    },
+                    {
+                      "name": "Repository",
+                      "value": "{{.app.spec.source.repoURL}}",
+                      "inline": true
+                    },
+                    {
+                      "name": "Revision",
+                      "value": "{{.app.status.sync.revision}}",
+                      "inline": true
+                    },
+                    {
+                      "name": "Version",
+                      "value": "{{.app.status.summary.images}}",
+                      "inline": true
+                    }
+                  ],
+                  "author": {
+                    "name": "{{.app.metadata.name}}",
+                    "url": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+                    "icon_url": "https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.png"
+                  }
+                }
+              ]
+            }
+  triggers:
+    trigger.on-deployed: |
+      - description: Application is synced and healthy. Triggered once per commit.
+        oncePer: app.status.sync.revision
+        send:
+        - app-deployed
