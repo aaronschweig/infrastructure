@@ -4,3 +4,4 @@ resources:
   - wildcard-cert.yaml
   - argocd-cert.yaml
   - auto-sdb-app.yaml
+  - image-pull-secret.yaml
