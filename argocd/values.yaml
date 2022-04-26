@@ -72,6 +72,7 @@ repoServer:
       - name: AVP_VERSION
         # renovate: https://github.com/argoproj-labs/argocd-vault-plugin/releases
         value: 1.10.0
+  
     volumeMounts:
       - mountPath: /custom-tools
         name: custom-tools
