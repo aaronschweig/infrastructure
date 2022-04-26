@@ -18,6 +18,8 @@
         "\\s+# renovate: datasource=(?<datasource>[^\\s]+) depName=(?<depName>[^\\s]+)\\s+version: ['\"]?(?<currentValue>[^\\s']+)['\"]?"
       ]
     }
-  ]
-
+  ],
+  "argocd": {
+    "fileMatch": ["vault/.+\\.yml$"]
+  }
 }
