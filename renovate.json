@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "dependencyDashboard": true,
+  "regexManagers": [
+    {
+      "datasourceTemplate": "github-releases",
+      "fileMatch": [
+        "\\.yaml$",
+        "\\.yml$"
+      ],
+      "matchStrings": [
+        "\\s+# renovate:\\s*(?:depName=(?<depName>[^\\s]+?))?\\s+.+?(?:image): ['\"]?[^:]+:?(?<currentValue>[^\\s']+)['\"]?",
+        "\\s+# renovate:\\s*(?:depName=(?<depName>[^\\s]+?))?\\s+.+?(?:value): ['\"]?(?<currentValue>[^\\s']+)['\"]?",
+        "\\s+# renovate:\\s+package: ['\"]?(?<depName>[^\\s\":]+)?:(?<currentValue>[^\\s\"]+)?['\"]?",
+        "\\s+# renovate:\\s+-? ?https:\\/\\/(?:raw\\.githubusercontent|github)\\.com\\/(?<depName>[^\\/]+\\/[^\\/]+)\\/(?:releases|download|\\/)*(?<currentValue>[^\\/]+).*",
+        "\\s+# renovate: datasource=(?<datasource>[^\\s]+) depName=(?<depName>[^\\s]+)\\s+version: ['\"]?(?<currentValue>[^\\s']+)['\"]?",
+        "\\s+# renovate: https:\\/\\/(?:raw\\.githubusercontent|github)\\.com\\/(?<depName>[^\\/]+\\/[^\\/]+)\\/(?:releases|download|\\/)\\s+value: ['\"]?(?<currentValue>[^\\s']+)['\"]?"
+      ]
+    }
+  ],
+  "argocd": {
+    "fileMatch": ["vault/.+\\.yml$"]
+  }
+}
