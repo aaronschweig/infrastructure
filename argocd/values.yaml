@@ -49,11 +49,11 @@ server:
       - name: argocd-vault-plugin-kustomize
         generate:
           command: ["sh", "-c"]
-          args: ["kustomize build . > all.yaml && argocd-vault-plugin generate all.yaml"]
+          args: ["kustomize build . --enable-helm > all.yaml && argocd-vault-plugin generate all.yaml"]
   rbacConfig:
     policy.csv: |
       g, ams-pro:devops, role:admin
-    policy.default: role:readonly
+    policy.default: ""
 
 repoServer:
   volumes:
