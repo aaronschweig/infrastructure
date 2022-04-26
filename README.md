@@ -1,5 +1,5 @@
 # Setup
-<!-- Trigger #2 -->
+
 1. Create the cluster
 1. Fill out the credentials in the value file
     - Discord Webhook-URL (`YOUR_WEBHOOK_URL`)
