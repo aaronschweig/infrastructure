@@ -12,11 +12,8 @@ spec:
     repoURL: https://charts.crossplane.io/stable
     chart: crossplane
     targetRevision: 1.7.0
-    plugin:
-      name: argocd-vault-plugin-helm
-      env:
-        - name: RELEASE_NAME
-          value: crossplane
+    helm:
+      releaseName: crossplane
   syncPolicy:
     automated:
       prune: true

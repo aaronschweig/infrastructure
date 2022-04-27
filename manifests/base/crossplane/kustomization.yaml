@@ -1,3 +1,4 @@
 resources:
   - provider.yaml
   - provider-config.yaml
+  - app.yaml
