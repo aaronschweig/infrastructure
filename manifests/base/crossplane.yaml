@@ -13,7 +13,7 @@ spec:
     chart: crossplane
     targetRevision: 1.7.0
     plugin:
-      name: argocd-vault-plugin-kustomize
+      name: argocd-vault-plugin-helm
     helm:
       releaseName: crossplane
   syncPolicy:
