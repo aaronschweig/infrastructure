@@ -5,3 +5,4 @@ resources:
   - argocd-cert.yaml
   - auto-sdb-app.yaml
   - image-pull-secret.yaml
+  - crossplane.yaml

@@ -23,6 +23,9 @@
     }
   ],
   "argocd": {
-    "fileMatch": ["vault/.+\\.yml$"]
+    "fileMatch": [
+      "vault/.+\\.yaml$",
+      "manifests/base/.+\\.yaml$"
+    ]
   }
 }
