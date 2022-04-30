@@ -4,8 +4,10 @@ metadata:
   name: ams-pro-repo-creds
   labels:
     argocd.argoproj.io/secret-type: repo-creds
+  annotations:
+    avp.kubernetes.io/path: "secret/data/github"
 type: Opaque
 stringData:
   url: https://github.com/ams-pro
   username: aaronschweig
-  password: <PAT>
+  password: <pat>
