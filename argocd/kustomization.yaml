@@ -2,7 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.3.3
+  # renovate:
+  - https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/install.yaml?ref=v2.3.3
   - overlays/ingress.yaml
   - overlays/repo-creds.yaml
 
