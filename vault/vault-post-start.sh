@@ -8,7 +8,7 @@ vault auth enable kubernetes
 vault write auth/kubernetes/config kubernetes_host=https://kubernetes.default.svc:443
 
 # write role for default service account to access vault from every namespace
-vault write auth/kubernetes/role/argocd bound_service_account_names=argocd-repo-server bound_service_account_namespaces="*" policies="argocd-policy"
+vault write auth/kubernetes/role/argocd bound_service_account_names=argocd-server bound_service_account_namespaces="*" policies="argocd-policy"
 
 printf 'path "secret/*" {\ncapabilities=["create", "read", "update", "delete", "list"]\n}' | vault policy write oidc-policy -
 

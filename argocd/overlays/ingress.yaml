@@ -1,9 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argo-argocd-server
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
+  name: argocd-server
 spec:
   rules:
     - host: argocd.aaronschweig.dev
@@ -13,7 +11,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: argo-argocd-server
+                name: argocd-server
                 port:
                   number: 80
   tls:
