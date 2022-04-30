@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - github.com/argoproj/argo-cd//manifests/cluster-install?ref=v2.3.3
+  - overlays/ingress.yaml
+  - overlays/repo-creds.yaml
+
+patchesStrategicMerge:
+  - overlays/argocd-cm.yaml
+  - overlays/argocd-rbac-cm.yaml
+  - overlays/argocd-secret.yaml
+  - overlays/repo-server-deploy.yaml
+
+
+patchesJson6902:
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: argocd-server
+  path: overlays/server-extra-args.yaml

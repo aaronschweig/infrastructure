@@ -19,6 +19,8 @@ server:
       hs = {}
       hs.status = "Healthy"
       return hs
+    resource.compareoptions: |
+      ignoreAggregatedRoles: true
     dex.config: |
       staticClients:
       - id: vault-oidc
@@ -109,7 +111,7 @@ configs:
       dex.github.clientSecret: <CLIENT_SECRET>
 
 applicationSet:
-  enabled: false
+  enabled: true
 
 notifications:
   argocdUrl: 'https://argocd.aaronschweig.dev'
