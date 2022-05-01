@@ -31,6 +31,7 @@ data:
         - name: ams-pro
           teams:
           - devops
+          - infrastructure
   configManagementPlugins: |
     - name: argocd-vault
       generate:
