@@ -11,7 +11,7 @@ spec:
       key: credentials
       name: gcp-credentials
       namespace: crossplane-system
-  projectID: <project-id>
+  projectID: <sa-gcp.json | jsonPath {.project_id}>
 ---
 # GCP Admin service account secret - used by GCP ProviderConfig
 apiVersion: v1
