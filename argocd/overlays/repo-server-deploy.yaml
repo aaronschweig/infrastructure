@@ -7,7 +7,6 @@ spec:
   template:
     spec:
       automountServiceAccountToken: true
-      serviceAccount: ""
       serviceAccountName: argocd-server
       containers:
         - name: argocd-repo-server
