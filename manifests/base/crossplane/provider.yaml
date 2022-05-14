@@ -3,4 +3,4 @@ kind: Provider
 metadata:
   name: provider-gcp
 spec:
-  package: crossplane/provider-gcp:v0.21.0
+  package: crossplane/provider-gcp:v0.22.0-rc
