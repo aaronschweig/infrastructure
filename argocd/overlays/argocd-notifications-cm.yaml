@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+data:
+  context: |
+    argocdUrl: https://argocd.aaronschweig.dev/
+
+  service.webhook.discord: |
+      url: $discord-url
+      headers:
+      - name: 'Content-Type'
+        value: 'application/json'
+
+  template.app-deployed: |
+    webhook:
+      discord:
+        method: POST
+        body: |
+          {
+            "embeds": [
+              {
+                "title": ":white_check_mark: Application {{.app.metadata.name}} is now running the new version of deployments manifests.",
+                "color": 1621586,
+                "fields": [
+                  {
+                    "name": "Sync Status",
+                    "value": "{{.app.status.sync.status}}",
+                    "inline": true
+                  },
+                  {
+                    "name": "Repository",
+                    "value": "{{.app.spec.source.repoURL}}",
+                    "inline": true
+                  },
+                  {
+                    "name": "Revision",
+                    "value": "{{.app.status.sync.revision}}",
+                    "inline": true
+                  },
+                  {
+                    "name": "Version",
+                    "value": "{{.app.status.summary.images}}",
+                    "inline": true
+                  }
+                ],
+                "author": {
+                  "name": "{{.app.metadata.name}}",
+                  "url": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}",
+                  "icon_url": "https://cncf-branding.netlify.app/img/projects/argo/icon/color/argo-icon-color.png"
+                }
+              }
+            ]
+          }
+
+  trigger.on-deployed: |
+    when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+    oncePer: app.status.sync.revision
+    send:
+    - app-deployed

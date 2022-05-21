@@ -12,6 +12,8 @@ patchesStrategicMerge:
   - overlays/argocd-rbac-cm.yaml
   - overlays/argocd-secret.yaml
   - overlays/repo-server-deploy.yaml
+  - overlays/argocd-notifications-cm.yaml
+  - overlays/argocd-notifications-secret.yaml
 
 
 patchesJson6902:
