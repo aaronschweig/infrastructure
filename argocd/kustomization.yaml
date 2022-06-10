@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   # renovate:
-  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.3.4/manifests/install.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.0/manifests/install.yaml
   - overlays/ingress.yaml
   - overlays/repo-creds.yaml
 
