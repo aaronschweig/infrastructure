@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: 'https://helm.releases.hashicorp.com'
     chart: vault
-    targetRevision: 0.21.0
+    targetRevision: 0.22.0
     helm:
       releaseName: vault
       values: |
@@ -21,7 +21,7 @@ spec:
           dev:
             enabled: false
           image:
-            tag: 1.11.2
+            tag: 1.11.3
           ingress:
             enabled: true
             hosts:
