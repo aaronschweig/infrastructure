@@ -19,6 +19,11 @@ data:
       redirectURIs:
         - https://vault.aaronschweig.dev/ui/vault/auth/oidc/oidc/callback # login via UI
         - http://localhost:8250/oidc/callback # login via cli
+    - id: ams-pro-k8s
+      secret: $dex.github.clientSecret
+      name: 'AMS-Pro Cluster'
+      redirectURIs:
+        - http://localhost:8000
         
     connectors:
     - type: github
