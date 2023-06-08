@@ -13,7 +13,7 @@ data:
     ignoreAggregatedRoles: true
   dex.config: |
     oauth2:
-      responseTypes: ["code", "id_token"]
+      responseTypes: ["code", "id_token", "token"]
 
     staticClients:
     - id: vault-oidc
