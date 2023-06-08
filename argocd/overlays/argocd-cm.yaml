@@ -12,6 +12,9 @@ data:
   resource.compareoptions: |
     ignoreAggregatedRoles: true
   dex.config: |
+    oauth:
+      responseTypes: ["code", "id_token"]
+
     staticClients:
     - id: vault-oidc
       secret: $dex.github.clientSecret
@@ -20,7 +23,7 @@ data:
         - https://vault.aaronschweig.dev/ui/vault/auth/oidc/oidc/callback # login via UI
         - http://localhost:8250/oidc/callback # login via cli
     - id: ams-pro-k8s
-      public: true
+      secret: $dex.github.clientSecret
       name: 'AMS-Pro Cluster'
       redirectURIs:
         - http://localhost:8000
