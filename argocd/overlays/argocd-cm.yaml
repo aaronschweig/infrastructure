@@ -12,7 +12,7 @@ data:
   resource.compareoptions: |
     ignoreAggregatedRoles: true
   dex.config: |
-    oauth:
+    oauth2:
       responseTypes: ["code", "id_token"]
 
     staticClients:
