@@ -1,0 +1,15 @@
+resources:
+  - app.yaml
+
+helmCharts:
+  - name: mariadb
+    repo: https://charts.bitnami.com/bitnami
+    includeCRDs: false
+    releaseName: mariadb
+    version: 12.2.8
+    valuesInline:
+      primary:
+        persistence:
+          size: 1Gi
+      auth:
+        existingSecret: mariadb
