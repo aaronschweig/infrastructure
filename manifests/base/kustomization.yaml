@@ -6,4 +6,4 @@ resources:
   - forma
 # - auto-sdb-app.yaml
   - image-pull-secret.yaml
-  - ./crossplane
+  # - ./crossplane
