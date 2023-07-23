@@ -1,25 +1,24 @@
-apiVersion: gcp.crossplane.io/v1beta1
+apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
   name: default
-  annotations:
-    avp.kubernetes.io/path: "secret/data/gcp"
 spec:
   credentials:
     source: Secret
     secretRef:
-      key: credentials
-      name: gcp-credentials
+      name: aws-credentials
       namespace: crossplane-system
-  projectID: <sa-gcp.json | jsonPath {.project_id}>
+      key: creds
 ---
-# GCP Admin service account secret - used by GCP ProviderConfig
+# AWS Access Key Credentials
 apiVersion: v1
 kind: Secret
 metadata:
-  name: gcp-credentials
+  name: aws-credentials
   namespace: crossplane-system
   annotations:
-    avp.kubernetes.io/path: "secret/data/gcp"
+    avp.kubernetes.io/path: "secret/data/aws"
 stringData:
-  credentials: <sa-gcp.json>
+  creds: |
+    aws_access_key_id: <accessKeyIDFull>
+    aws_secret_access_key: <accessKeySecretFull>
