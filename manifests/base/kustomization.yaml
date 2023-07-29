@@ -3,7 +3,7 @@ resources:
   - api-key.yaml
   - wildcard-cert.yaml
   - argocd-cert.yaml
-  - forma
+  # - forma
 # - auto-sdb-app.yaml
   - image-pull-secret.yaml
   # - ./crossplane
