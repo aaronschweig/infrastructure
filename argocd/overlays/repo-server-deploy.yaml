@@ -43,4 +43,4 @@ spec:
         env:
           - name: AVP_VERSION
             # renovate: https://github.com/argoproj-labs/argocd-vault-plugin/releases
-            value: v1.16.0
+            value: v1.16.1
