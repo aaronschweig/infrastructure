@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ConfigManagementPlugin
+metadata:
+  name: argocd-vault-plugin
+spec:
+  generate:
+    command: ["argocd-vault-plugin"]
+    args: ["generate", "./"]
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ConfigManagementPlugin
+metadata:
+  name: argocd-vault-plugin-kustomize
+spec:
+  generate:
+    command: ["sh", "-c"]
+    args: ["kustomize build --enable-helm . > all.yaml && argocd-vault-plugin generate all.yaml"]
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ConfigManagementPlugin
+metadata:
+  name: argocd-vault-plugin-helm
+spec:
+  init:
+    command: ["sh", "-c"]
+    args: ["helm dependency build"] # for dependencies
+  generate:
+    command: ["sh", "-c"]
+    args: ["helm template --release-name $RELEASE_NAME -n $ARGOCD_APP_NAMESPACE . > all.yaml && argocd-vault-plugin generate all.yaml"]
