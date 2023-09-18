@@ -15,4 +15,4 @@ patches:
 - path: overlays/argocd-notifications-cm.yaml
 - path: overlays/argocd-notifications-secret.yaml
 - path: overlays/argocd-cmd-cm.yaml
-- path: overlays/management-plugins.yaml
+# - path: overlays/management-plugins.yaml
