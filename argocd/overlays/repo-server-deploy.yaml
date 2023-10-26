@@ -10,6 +10,10 @@ spec:
       serviceAccountName: argocd-server
       containers:
         - name: argocd-repo-server
+          volumeMounts:
+            - name: custom-tools
+              subPath: argocd-vault-plugin
+              mountPath: /usr/local/bin/argocd-vault-plugin
           env:
             - name: AVP_TYPE
               value: vault
