@@ -21,7 +21,7 @@ spec:
           dev:
             enabled: false
           image:
-            tag: 1.14.0
+            tag: 1.15.1
           ingress:
             enabled: true
             hosts:
